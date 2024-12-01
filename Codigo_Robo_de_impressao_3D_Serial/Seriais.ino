@@ -64,6 +64,9 @@ void _entradaDados(char *articulacao, int *posicao) {
         case 'G':
           numeroConvertido = constrain(numeroConvertido, 0, 1);  // Fecha ou Abre
           break;
+        case 'L':
+          numeroConvertido = constrain(numeroConvertido, 0, 1);  // Desliga ou Liga
+          break;
         default:
           break;
       }

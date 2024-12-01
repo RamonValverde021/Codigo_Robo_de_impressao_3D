@@ -1,16 +1,23 @@
+int delay_Base = 10;
+int delay_Ombro = 4;
+int delay_Cotovelo = 4;
+int delay_Pulso = 4;
+int delay_Rotacao = 10;
+int delay_Garra = 150;
+
 // Função para apontar os servos
-void _Servos(char servo, int posicao, int atraso) {
+void _Servos(char servo, int posicao) {
   if (servo == 'B') {
     int base_atual = base.read();
     if (posicao > base_atual) {
       for (int c = base_atual; c < posicao; c++) {
         base.write(c);
-        delay(atraso);
+        delay(delay_Base);
       }
     } else {
       for (int c = base_atual; c > posicao; c--) {
         base.write(c);
-        delay(atraso);
+        delay(delay_Base);
       }
     }
   }
@@ -20,12 +27,12 @@ void _Servos(char servo, int posicao, int atraso) {
     if (posicao > ombro_atual) {
       for (int c = ombro_atual; c < posicao; c++) {
         ombro.write(c);
-        delay(atraso);
+        delay(delay_Ombro);
       }
     } else {
       for (int c = ombro_atual; c > posicao; c--) {
         ombro.write(c);
-        delay(atraso);
+        delay(delay_Ombro);
       }
     }
   }
@@ -35,12 +42,12 @@ void _Servos(char servo, int posicao, int atraso) {
     if (posicao > cotovelo_atual) {
       for (int c = cotovelo_atual; c < posicao; c++) {
         cotovelo.write(c);
-        delay(atraso);
+        delay(delay_Cotovelo);
       }
     } else {
       for (int c = cotovelo_atual; c > posicao; c--) {
         cotovelo.write(c);
-        delay(atraso);
+        delay(delay_Cotovelo);
       }
     }
   }
@@ -50,12 +57,12 @@ void _Servos(char servo, int posicao, int atraso) {
     if (posicao > pulso_atual) {
       for (int c = pulso_atual; c < posicao; c++) {
         pulso.write(c);
-        delay(atraso);
+        delay(delay_Pulso);
       }
     } else {
       for (int c = pulso_atual; c > posicao; c--) {
         pulso.write(c);
-        delay(atraso);
+        delay(delay_Pulso);
       }
     }
   }
@@ -65,12 +72,12 @@ void _Servos(char servo, int posicao, int atraso) {
     if (posicao > rotacao_atual) {
       for (int c = rotacao_atual; c < posicao; c++) {
         rotacao.write(c);
-        delay(atraso);
+        delay(delay_Rotacao);
       }
     } else {
       for (int c = rotacao_atual; c > posicao; c--) {
         rotacao.write(c);
-        delay(atraso);
+        delay(delay_Rotacao);
       }
     }
   }
@@ -78,18 +85,17 @@ void _Servos(char servo, int posicao, int atraso) {
   if (servo == 'G') {
     // 1 garra aberta   0 garra fechada
     int potencia = 255;
-    int espera = atraso;  // 150
     if (posicao == 1) {
       // Abre a Garra
       digitalWrite(pinGarraA, LOW);
       analogWrite(pinGarraF, potencia);
-      delay(espera);
+      delay(delay_Garra);
       status_garra = "ABERTA";
     } else {
       // Fecha a Garra
       analogWrite(pinGarraA, potencia);
       digitalWrite(pinGarraF, LOW);
-      delay(espera);
+      delay(delay_Garra);
       status_garra = "FECHADA";
     }
     // Para o motor
@@ -103,12 +109,12 @@ void _Servos(char servo, int posicao, int atraso) {
 
 // Sequencia de movimentos para posicionar o motor inicialmente
 void _posicaoInicial() {
-  _Servos('B', 90, 10);
-  _Servos('C', 30, 10);
-  _Servos('O', 170, 10);
-  _Servos('R', 5, 0);
-  _Servos('P', 93, 10);
-  _Servos('G', 1, 150);
+  _Servos('B', 90);
+  _Servos('C', 30);
+  _Servos('O', 170);
+  _Servos('R', 5);
+  _Servos('P', 93);
+  _Servos('G', 1);
   digitalWrite(luz, HIGH);
   delay(2000);
   digitalWrite(luz, LOW);

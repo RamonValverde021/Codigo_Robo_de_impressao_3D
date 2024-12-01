@@ -11,37 +11,43 @@ void _Comandos() {
     if (articulacao == 'B') {
       if (posicaoAtual != posicao) {
         _DisplaySerial(articulacao, posicao);
-        _Servos('B', posicao, 15);
+        _Servos('B', posicao);
       }
       posicaoAtual = posicao;
     } else if (articulacao == 'O') {
       if (posicaoAtual != posicao) {
         _DisplaySerial(articulacao, posicao);
-        _Servos('O', posicao, 15);
+        _Servos('O', posicao);
       }
       posicaoAtual = posicao;
     } else if (articulacao == 'C') {
       if (posicaoAtual != posicao) {
         _DisplaySerial(articulacao, posicao);
-        _Servos('C', posicao, 15);
+        _Servos('C', posicao);
       }
       posicaoAtual = posicao;
     } else if (articulacao == 'P') {
       if (posicaoAtual != posicao) {
         _DisplaySerial(articulacao, posicao);
-        _Servos('P', posicao, 15);
+        _Servos('P', posicao);
       }
       posicaoAtual = posicao;
     } else if (articulacao == 'R') {
       if (posicaoAtual != posicao) {
         _DisplaySerial(articulacao, posicao);
-        _Servos('R', posicao, 15);
+        _Servos('R', posicao);
       }
       posicaoAtual = posicao;
     } else if (articulacao == 'G') {
       if (posicaoAtual != posicao) {
         _DisplaySerial(articulacao, posicao);
-        _Servos('G', posicao, 0);
+        _Servos('G', posicao);
+      }
+      posicaoAtual = posicao;
+    } else if (articulacao == 'L') {
+      if (posicaoAtual != posicao) {
+        posicao == 1 ? digitalWrite(luz, HIGH) : digitalWrite(luz, LOW);
+        _DisplaySerial(articulacao, posicao);
       }
       posicaoAtual = posicao;
     } else if (articulacao == 'Z') {
